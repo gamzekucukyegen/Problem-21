@@ -1,6 +1,6 @@
-"use client"
-import { useEffect, useState } from 'react'
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+"use client";
+import { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 export default function App() {
   return (
@@ -17,31 +17,28 @@ export default function App() {
         </nav>
         <Routes>
           <Route path='/' element={<MousePosition />} />
-          <Route
-            path='/about'
-            element={<h1>Mouse&apos;unuzu takip edin!</h1>}
-          />
+          <Route path='/about' element={<h1>Mouse&apos;unuzu takip edin!</h1>} />
         </Routes>
       </BrowserRouter>
     </div>
-  )
+  );
 }
 
 function MousePosition() {
-  const [position, setPosition] = useState({ x: 0, y: 0 })
+  const [position, setPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     function handleMove(e) {
-      setPosition({ x: e.clientX, y: e.clientY })
-      console.log('Updating state')
+      setPosition({ x: e.clientX, y: e.clientY });
+      console.log('Updating state');
     }
-    window.addEventListener('pointermove', handleMove)
+    window.addEventListener('pointermove', handleMove);
 
     return () => {
       window.removeEventListener('pointermove', handleMove);
-      console.log('Unmounted')
-    }
-  }, [])
+      console.log('Unmounted');
+    };
+  }, []);
 
   return (
     <div className='space-y-5'>
@@ -52,5 +49,5 @@ function MousePosition() {
         Y position: <strong>{position.y.toFixed(2)}</strong>
       </div>
     </div>
-  )
+  );
 }
